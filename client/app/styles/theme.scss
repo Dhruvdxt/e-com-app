@@ -1,0 +1,208 @@
+// Global Theme Variables
+:root {
+  // Default theme (Forest Green)
+  --theme-primary: #588157;
+  --theme-secondary: #3a5a40;
+  --theme-accent: #a3b18a;
+  --theme-background: #dad7cd;
+  --theme-text: #344e41;
+  --theme-button-primary: #588157;
+  --theme-button-secondary: #3a5a40;
+  --theme-link-color: #588157;
+  --theme-border-color: #a3b18a;
+  --theme-card-background: #dad7cd;
+  --theme-hover-color: #3a5a40;
+  --theme-light-bg: #f6fff8;
+  --theme-dark-bg: #2f3e46;
+}
+
+// Apply theme colors to various elements
+body {
+  background-color: var(--theme-background);
+  color: var(--theme-text);
+}
+
+// Header theming
+.header {
+  background-color: white;
+  border-bottom: 2px solid var(--theme-accent);
+  
+  .logo {
+    color: var(--theme-primary);
+    font-weight: 600;
+    
+    &:hover {
+      color: var(--theme-secondary);
+    }
+  }
+}
+
+// Button theming
+.btn-primary {
+  background-color: var(--theme-primary);
+  border-color: var(--theme-primary);
+  
+  &:hover {
+    background-color: var(--theme-secondary);
+    border-color: var(--theme-secondary);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--theme-secondary);
+  border-color: var(--theme-secondary);
+  
+  &:hover {
+    background-color: var(--theme-primary);
+    border-color: var(--theme-primary);
+  }
+}
+
+// Link theming
+a {
+  color: var(--theme-link-color);
+  
+  &:hover {
+    color: var(--theme-secondary);
+  }
+}
+
+// Card theming
+.card {
+  background-color: var(--theme-card-background);
+  border: 1px solid var(--theme-border-color);
+  
+  .card-header {
+    background-color: var(--theme-accent);
+    color: var(--theme-text);
+    border-bottom: 1px solid var(--theme-border-color);
+  }
+}
+
+// Form theming
+.form-control {
+  border-color: var(--theme-border-color);
+  
+  &:focus {
+    border-color: var(--theme-primary);
+    box-shadow: 0 0 0 0.2rem rgba(88, 129, 87, 0.25);
+  }
+}
+
+// Navigation theming
+.navbar {
+  .nav-link {
+    color: var(--theme-text);
+    
+    &:hover {
+      color: var(--theme-primary);
+    }
+    
+    &.active {
+      color: var(--theme-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+// Product card theming
+.product-card {
+  background-color: white;
+  border: 1px solid var(--theme-border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: var(--theme-primary);
+    box-shadow: 0 4px 12px rgba(88, 129, 87, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .product-title {
+    color: var(--theme-primary);
+  }
+  
+  .product-price {
+    color: var(--theme-secondary);
+    font-weight: 600;
+  }
+}
+
+// Badge theming
+.badge-primary {
+  background-color: var(--theme-primary);
+}
+
+.badge-secondary {
+  background-color: var(--theme-secondary);
+}
+
+// Alert theming
+.alert-primary {
+  background-color: var(--theme-light-bg);
+  border-color: var(--theme-accent);
+  color: var(--theme-text);
+}
+
+// Dropdown theming
+.dropdown-menu {
+  border: 1px solid var(--theme-border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  .dropdown-item {
+    color: var(--theme-text);
+    
+    &:hover {
+      background-color: var(--theme-accent);
+      color: var(--theme-text);
+    }
+  }
+}
+
+// Search theming
+.search-input {
+  border: 2px solid var(--theme-border-color);
+  border-radius: 25px;
+  
+  &:focus {
+    border-color: var(--theme-primary);
+    box-shadow: 0 0 0 0.2rem rgba(88, 129, 87, 0.25);
+  }
+}
+
+// Cart theming
+.cart-icon {
+  color: var(--theme-primary);
+  
+  &:hover {
+    color: var(--theme-secondary);
+  }
+}
+
+// Footer theming
+.footer {
+  background-color: var(--theme-dark-bg);
+  color: white;
+  
+  a {
+    color: var(--theme-accent);
+    
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+// Theme transition
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+// Responsive theme adjustments
+@media (max-width: 768px) {
+  .header {
+    .logo {
+      font-size: 1.5rem;
+    }
+  }
+}

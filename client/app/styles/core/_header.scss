@@ -1,16 +1,5 @@
 // header styles
-.header-info {
-  padding: 10px 0px;
-  background-color: $theme-light-black;
-
-  .fa,
-  span {
-    color: $white;
-    font-size: $font-size-medium !important;
-    font-weight: $font-weight-normal;
-    margin: 0px 5px;
-  }
-}
+// Removed header-info styles as black top bar is removed
 
 .header {
   background-color: $white;
@@ -18,7 +7,14 @@
 
   .logo {
     font-size: $font-size-heading-large !important;
-    font-weight: $font-weight-normal;
+    font-weight: 600;
+    color: var(--theme-primary, #588157);
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--theme-secondary, #3a5a40);
+      text-decoration: none;
+    }
   }
 }
 
