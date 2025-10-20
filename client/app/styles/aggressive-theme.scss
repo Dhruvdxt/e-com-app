@@ -1,0 +1,850 @@
+// ===================================
+// AGGRESSIVE THEME TRANSFORMATION
+// Eliminates white dominance and applies theme everywhere
+// ===================================
+
+// ===================================
+// 1. GLOBAL BACKGROUND & BODY
+// ===================================
+body {
+  background: var(--theme-background) !important;
+  color: var(--theme-text-primary) !important;
+  min-height: 100vh;
+}
+
+#root,
+.app,
+.main-wrapper {
+  background: var(--theme-background) !important;
+  min-height: 100vh;
+}
+
+// ===================================
+// 2. ELIMINATE WHITE BACKGROUNDS
+// ===================================
+* {
+  &:not(.btn):not(.badge):not(.alert) {
+    background-color: transparent;
+  }
+}
+
+// All sections and containers
+.section,
+.container,
+.container-fluid,
+.row,
+.col,
+[class*="col-"] {
+  background: transparent !important;
+}
+
+// ===================================
+// 3. MAXIMUM WIDTH UTILIZATION
+// ===================================
+.container,
+.container-fluid {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  margin: 0 auto !important;
+  
+  @media (min-width: 768px) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  @media (min-width: 1200px) {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+}
+
+// Content wrappers
+.page-wrapper,
+.content-wrapper,
+.main-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+// ===================================
+// 4. CARDS - FULLY THEMED
+// ===================================
+.card,
+.product-card,
+.item-card,
+.box,
+.panel,
+[class*="card"] {
+  background: linear-gradient(135deg, var(--theme-background), var(--theme-accent)) !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px var(--theme-shadow), 
+              0 0 0 1px var(--theme-border) !important;
+  padding: 20px !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--theme-primary), var(--theme-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 16px 48px var(--theme-shadow),
+                0 0 0 2px var(--theme-primary) !important;
+    border-color: var(--theme-hover) !important;
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-4px) scale(1.01) !important;
+  }
+  
+  .card-body,
+  .card-content {
+    background: transparent !important;
+    padding: 15px !important;
+  }
+  
+  .card-title,
+  .card-header {
+    background: transparent !important;
+    color: var(--theme-text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 15px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 2px solid var(--theme-border) !important;
+  }
+  
+  .card-text,
+  .card-description,
+  p {
+    color: var(--theme-text-primary) !important;
+    line-height: 1.6 !important;
+  }
+  
+  .card-footer {
+    background: transparent !important;
+    border-top: 2px solid var(--theme-border) !important;
+    padding-top: 15px !important;
+    margin-top: 15px !important;
+  }
+}
+
+// ===================================
+// 5. BUTTONS - BOLD & THEMED
+// ===================================
+.btn,
+button:not(.close):not(.btn-close),
+[type="button"],
+[type="submit"] {
+  background: var(--theme-primary) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 12px !important;
+  padding: 14px 32px !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 16px var(--theme-shadow),
+              0 2px 8px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:hover {
+    background: var(--theme-hover) !important;
+    border-color: var(--theme-hover) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 24px var(--theme-shadow),
+                0 4px 12px rgba(0,0,0,0.15) !important;
+    
+    &::before {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(1.02) !important;
+  }
+  
+  &:focus {
+    outline: 3px solid var(--theme-focus) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 4px var(--theme-shadow),
+                0 8px 24px var(--theme-shadow) !important;
+  }
+  
+  &.btn-secondary {
+    background: var(--theme-secondary) !important;
+    border-color: var(--theme-secondary) !important;
+  }
+  
+  &.btn-outline-primary {
+    background: transparent !important;
+    color: var(--theme-primary) !important;
+    border: 2px solid var(--theme-primary) !important;
+    
+    &:hover {
+      background: var(--theme-primary) !important;
+      color: #ffffff !important;
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+}
+
+// ===================================
+// 6. FORMS - FULLY THEMED NO WHITE
+// ===================================
+.form-control,
+.form-select,
+input,
+textarea,
+select {
+  background: var(--theme-accent) !important;
+  color: var(--theme-text-primary) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 12px !important;
+  padding: 14px 20px !important;
+  font-size: 1rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05) !important;
+  
+  &::placeholder {
+    color: var(--theme-text-secondary) !important;
+    opacity: 0.6 !important;
+  }
+  
+  &:hover {
+    border-color: var(--theme-hover) !important;
+    box-shadow: 0 0 0 4px var(--theme-shadow),
+                inset 0 2px 4px rgba(0,0,0,0.05) !important;
+  }
+  
+  &:focus {
+    background: var(--theme-background) !important;
+    border-color: var(--theme-primary) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 4px var(--theme-shadow),
+                0 4px 16px var(--theme-shadow),
+                inset 0 2px 4px rgba(0,0,0,0.05) !important;
+    transform: translateY(-2px) !important;
+  }
+}
+
+// Search bars - special treatment
+input[type="search"],
+.search-input,
+.search-box input {
+  background: var(--theme-accent) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 50px !important;
+  padding: 14px 24px 14px 48px !important;
+  font-size: 1.05rem !important;
+  box-shadow: 0 4px 12px var(--theme-shadow) !important;
+  
+  &:focus {
+    border-color: var(--theme-primary) !important;
+    box-shadow: 0 0 0 6px var(--theme-shadow),
+                0 8px 24px var(--theme-shadow) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+  }
+}
+
+.form-label,
+label {
+  color: var(--theme-text-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  margin-bottom: 8px !important;
+}
+
+// ===================================
+// 7. NAVIGATION - THEMED
+// ===================================
+.navbar,
+.header,
+.navigation {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+  border-bottom: 3px solid var(--theme-accent) !important;
+  box-shadow: 0 4px 20px var(--theme-shadow) !important;
+  padding: 15px 0 !important;
+  
+  .navbar-brand {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.75rem !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      color: var(--theme-accent) !important;
+      transform: scale(1.05) !important;
+    }
+  }
+  
+  .nav-link {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    margin: 0 5px !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--theme-accent);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.2) !important;
+      transform: translateY(-2px) !important;
+      
+      &::after {
+        width: 80%;
+      }
+    }
+    
+    &:focus {
+      outline: 2px solid #ffffff !important;
+      outline-offset: 2px !important;
+    }
+    
+    &.active {
+      background: var(--theme-accent) !important;
+      color: var(--theme-text-primary) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    }
+  }
+}
+
+// ===================================
+// 8. PRODUCT GRID - THEMED
+// ===================================
+.products-grid,
+.product-list,
+.items-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 30px !important;
+  padding: 30px 0 !important;
+  width: 100% !important;
+}
+
+.product-item,
+.product-box,
+.item {
+  background: linear-gradient(135deg, var(--theme-background), var(--theme-accent)) !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 6px 24px var(--theme-shadow) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--theme-primary), var(--theme-secondary), var(--theme-accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-12px) scale(1.03) !important;
+    box-shadow: 0 20px 60px var(--theme-shadow),
+                0 0 0 3px var(--theme-primary) !important;
+    border-color: var(--theme-hover) !important;
+    
+    &::before {
+      transform: scaleX(1);
+    }
+    
+    .product-image,
+    img {
+      transform: scale(1.1) !important;
+    }
+  }
+  
+  .product-image,
+  img {
+    transition: transform 0.4s ease !important;
+    border-radius: 16px !important;
+  }
+  
+  .product-name,
+  .product-title,
+  h3, h4 {
+    color: var(--theme-text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    margin: 15px 0 10px !important;
+  }
+  
+  .product-price,
+  .price {
+    color: var(--theme-primary) !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+  }
+  
+  .product-brand,
+  .product-description,
+  .description {
+    color: var(--theme-text-primary) !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+// ===================================
+// 9. FILTERS & SIDEBAR - THEMED
+// ===================================
+.filter-sidebar,
+.sidebar,
+.filters {
+  background: linear-gradient(180deg, var(--theme-background), var(--theme-accent)) !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 20px !important;
+  padding: 25px !important;
+  box-shadow: 0 6px 24px var(--theme-shadow) !important;
+  
+  h3, h4, h5 {
+    color: var(--theme-text-primary) !important;
+    font-weight: 700 !important;
+    padding: 15px !important;
+    background: var(--theme-primary) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 4px 12px var(--theme-shadow) !important;
+  }
+}
+
+// Price slider
+.rc-slider {
+  .rc-slider-rail {
+    background: var(--theme-accent) !important;
+    height: 8px !important;
+    border-radius: 4px !important;
+  }
+  
+  .rc-slider-track {
+    background: linear-gradient(90deg, var(--theme-primary), var(--theme-secondary)) !important;
+    height: 8px !important;
+    border-radius: 4px !important;
+  }
+  
+  .rc-slider-handle {
+    width: 24px !important;
+    height: 24px !important;
+    border: 4px solid var(--theme-primary) !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px var(--theme-shadow) !important;
+    
+    &:hover,
+    &:focus {
+      border-color: var(--theme-hover) !important;
+      transform: scale(1.2) !important;
+      box-shadow: 0 0 0 8px var(--theme-shadow) !important;
+    }
+  }
+}
+
+// ===================================
+// 10. TABLES - THEMED
+// ===================================
+.table,
+table {
+  background: var(--theme-background) !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 6px 24px var(--theme-shadow) !important;
+  
+  thead {
+    background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+    
+    th {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      padding: 18px !important;
+      font-size: 1.05rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      border: none !important;
+    }
+  }
+  
+  tbody {
+    tr {
+      background: var(--theme-accent) !important;
+      color: var(--theme-text-primary) !important;
+      transition: all 0.3s ease !important;
+      border-bottom: 2px solid var(--theme-border) !important;
+      
+      &:hover {
+        background: var(--theme-background) !important;
+        transform: scale(1.01) !important;
+        box-shadow: 0 4px 12px var(--theme-shadow) !important;
+      }
+      
+      td {
+        padding: 16px !important;
+        color: var(--theme-text-primary) !important;
+        font-weight: 500 !important;
+        border: none !important;
+      }
+    }
+  }
+}
+
+// ===================================
+// 11. MODALS - THEMED
+// ===================================
+.modal-content {
+  background: linear-gradient(135deg, var(--theme-background), var(--theme-accent)) !important;
+  border: 3px solid var(--theme-primary) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.3) !important;
+  
+  .modal-header {
+    background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+    border-bottom: none !important;
+    border-radius: 21px 21px 0 0 !important;
+    padding: 25px !important;
+    
+    .modal-title {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      font-size: 1.5rem !important;
+    }
+    
+    .close,
+    .btn-close {
+      color: #ffffff !important;
+      opacity: 0.9 !important;
+      font-size: 1.5rem !important;
+      transition: all 0.3s ease !important;
+      
+      &:hover {
+        opacity: 1 !important;
+        transform: scale(1.2) rotate(90deg) !important;
+      }
+    }
+  }
+  
+  .modal-body {
+    background: transparent !important;
+    color: var(--theme-text-primary) !important;
+    padding: 30px !important;
+  }
+  
+  .modal-footer {
+    background: transparent !important;
+    border-top: 2px solid var(--theme-border) !important;
+    padding: 20px 30px !important;
+  }
+}
+
+// ===================================
+// 12. PAGINATION - THEMED
+// ===================================
+.pagination {
+  gap: 10px !important;
+  
+  .page-item {
+    .page-link {
+      background: var(--theme-accent) !important;
+      color: var(--theme-primary) !important;
+      border: 2px solid var(--theme-primary) !important;
+      border-radius: 12px !important;
+      padding: 12px 20px !important;
+      font-weight: 600 !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 2px 8px var(--theme-shadow) !important;
+      
+      &:hover {
+        background: var(--theme-primary) !important;
+        color: #ffffff !important;
+        transform: translateY(-4px) scale(1.1) !important;
+        box-shadow: 0 6px 16px var(--theme-shadow) !important;
+      }
+      
+      &:focus {
+        outline: 3px solid var(--theme-focus) !important;
+        outline-offset: 2px !important;
+      }
+    }
+    
+    &.active .page-link {
+      background: var(--theme-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--theme-primary) !important;
+      box-shadow: 0 4px 16px var(--theme-shadow) !important;
+      transform: scale(1.1) !important;
+    }
+  }
+}
+
+// ===================================
+// 13. DROPDOWNS - THEMED
+// ===================================
+.dropdown-menu {
+  background: var(--theme-accent) !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px var(--theme-shadow) !important;
+  padding: 10px !important;
+  
+  .dropdown-item {
+    color: var(--theme-text-primary) !important;
+    border-radius: 10px !important;
+    padding: 12px 20px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    margin: 4px 0 !important;
+    
+    &:hover {
+      background: var(--theme-primary) !important;
+      color: #ffffff !important;
+      transform: translateX(8px) !important;
+      box-shadow: 0 4px 12px var(--theme-shadow) !important;
+    }
+    
+    &:focus {
+      background: var(--theme-primary) !important;
+      color: #ffffff !important;
+      outline: none !important;
+    }
+    
+    &.active {
+      background: var(--theme-primary) !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+  }
+}
+
+// ===================================
+// 14. BADGES & LABELS - THEMED
+// ===================================
+.badge {
+  background: var(--theme-primary) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  box-shadow: 0 2px 8px var(--theme-shadow) !important;
+  
+  &.badge-secondary {
+    background: var(--theme-secondary) !important;
+  }
+}
+
+// ===================================
+// 15. ALERTS - THEMED
+// ===================================
+.alert {
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  box-shadow: 0 4px 16px var(--theme-shadow) !important;
+  font-weight: 500 !important;
+}
+
+// ===================================
+// 16. BREADCRUMBS - THEMED
+// ===================================
+.breadcrumb {
+  background: var(--theme-accent) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 16px !important;
+  padding: 16px 24px !important;
+  box-shadow: 0 2px 8px var(--theme-shadow) !important;
+  
+  .breadcrumb-item {
+    color: var(--theme-text-primary) !important;
+    font-weight: 500 !important;
+    
+    a {
+      color: var(--theme-primary) !important;
+      font-weight: 600 !important;
+      transition: all 0.3s ease !important;
+      
+      &:hover {
+        color: var(--theme-hover) !important;
+        text-decoration: underline !important;
+      }
+    }
+    
+    &.active {
+      color: var(--theme-text-secondary) !important;
+    }
+  }
+}
+
+// ===================================
+// 17. CHECKBOXES & RADIO - THEMED
+// ===================================
+.form-check-input {
+  width: 24px !important;
+  height: 24px !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 6px !important;
+  background: var(--theme-accent) !important;
+  transition: all 0.3s ease !important;
+  
+  &:checked {
+    background: var(--theme-primary) !important;
+    border-color: var(--theme-primary) !important;
+    box-shadow: 0 0 0 4px var(--theme-shadow) !important;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 6px var(--theme-shadow) !important;
+  }
+  
+  &:hover {
+    border-color: var(--theme-hover) !important;
+    transform: scale(1.1) !important;
+  }
+}
+
+.form-check-label {
+  color: var(--theme-text-primary) !important;
+  font-weight: 500 !important;
+  margin-left: 10px !important;
+}
+
+// ===================================
+// 18. ALL HEADINGS - THEMED
+// ===================================
+h1, h2, h3, h4, h5, h6 {
+  color: var(--theme-text-primary) !important;
+  font-weight: 700 !important;
+}
+
+// ===================================
+// 19. ALL TEXT - THEMED
+// ===================================
+p, span, div:not(.btn), a, li, td, th, label {
+  color: var(--theme-text-primary) !important;
+}
+
+// ===================================
+// 20. LOADING & SPINNERS - THEMED
+// ===================================
+.spinner-border,
+.spinner-grow {
+  color: var(--theme-primary) !important;
+  border-color: var(--theme-primary) !important;
+}
+
+// ===================================
+// 21. ICONS - THEMED
+// ===================================
+i, svg, .icon {
+  color: var(--theme-primary) !important;
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    color: var(--theme-hover) !important;
+    transform: scale(1.15) !important;
+  }
+}
+
+// ===================================
+// 22. SPECIAL - WISHLIST & CART ICONS
+// ===================================
+.wishlist-icon,
+.cart-icon,
+.heart-icon {
+  color: var(--theme-primary) !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    color: var(--theme-hover) !important;
+    transform: scale(1.3) rotate(10deg) !important;
+  }
+  
+  &:active {
+    transform: scale(1.1) !important;
+  }
+}
+
+// ===================================
+// 23. SCROLLBAR - THEMED
+// ===================================
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-accent);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary);
+  border-radius: 6px;
+  border: 2px solid var(--theme-accent);
+  
+  &:hover {
+    background: var(--theme-hover);
+  }
+}
+

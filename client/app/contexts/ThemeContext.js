@@ -120,6 +120,18 @@ export const ThemeProvider = ({ children }) => {
     root.style.setProperty('--theme-link-color', theme.primary);
     root.style.setProperty('--theme-border-color', theme.accent);
     root.style.setProperty('--theme-card-background', theme.background);
+    
+    // Additional theme variables for better control
+    root.style.setProperty('--theme-text-primary', theme.text);
+    root.style.setProperty('--theme-text-secondary', theme.secondary);
+    root.style.setProperty('--theme-text-light', theme.accent);
+    root.style.setProperty('--theme-hover', theme.primary);
+    root.style.setProperty('--theme-focus', theme.secondary);
+    root.style.setProperty('--theme-shadow', `${theme.secondary}33`);
+    root.style.setProperty('--theme-border', theme.accent);
+    root.style.setProperty('--theme-input-bg', '#ffffff');
+    root.style.setProperty('--theme-input-border', theme.accent);
+    root.style.setProperty('--theme-input-focus', theme.primary);
   };
 
   useEffect(() => {

@@ -13,7 +13,9 @@ RUN npm install
 # Copy the rest of the client code
 COPY . .
 
-RUN mv .env.example .env
+# Accept build argument for API_URL
+ARG API_URL
+ENV API_URL=${API_URL}
 
 # Build the client for production
 RUN npm run build

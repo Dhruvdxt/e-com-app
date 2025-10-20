@@ -1,0 +1,637 @@
+// ===================================
+// ENHANCED THEME SYSTEM
+// ===================================
+
+// Global Theme-Aware Styles
+// This file contains comprehensive theme-aware styles that adapt to theme changes
+
+// ===================================
+// 1. CONTAINER & LAYOUT IMPROVEMENTS
+// ===================================
+
+// Reduce excessive left/right margins for more professional look
+.container,
+.container-fluid {
+  max-width: 100% !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  
+  @media (min-width: 768px) {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+  
+  @media (min-width: 1200px) {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
+// Main content area
+.main-content,
+.page-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+// ===================================
+// 2. TYPOGRAPHY - THEME AWARE
+// ===================================
+
+// All headings should use theme text color
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--theme-text-primary) !important;
+  font-weight: 600;
+}
+
+// Paragraph and general text
+p, span, div, label, li {
+  color: var(--theme-text-primary);
+}
+
+// Links
+a {
+  color: var(--theme-link-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: var(--theme-hover);
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid var(--theme-focus);
+    outline-offset: 2px;
+  }
+}
+
+// ===================================
+// 3. CARDS - ENHANCED WITH THEME
+// ===================================
+
+.card,
+.product-card,
+.item-card {
+  background: var(--theme-card-background);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--theme-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--theme-shadow);
+    border-color: var(--theme-primary);
+  }
+  
+  .card-title {
+    color: var(--theme-text-primary);
+    font-weight: 600;
+  }
+  
+  .card-text {
+    color: var(--theme-text-primary);
+  }
+  
+  .card-header {
+    background: linear-gradient(135deg, var(--theme-accent), var(--theme-background));
+    border-bottom: 1px solid var(--theme-border);
+    color: var(--theme-text-primary);
+  }
+  
+  .card-footer {
+    background: var(--theme-background);
+    border-top: 1px solid var(--theme-border);
+  }
+}
+
+// ===================================
+// 4. BUTTONS - THEME AWARE WITH STATES
+// ===================================
+
+.btn {
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  &:focus {
+    outline: 3px solid var(--theme-focus);
+    outline-offset: 2px;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-primary {
+  background: var(--theme-button-primary) !important;
+  border-color: var(--theme-button-primary) !important;
+  color: #ffffff !important;
+  
+  &:hover {
+    background: var(--theme-hover) !important;
+    border-color: var(--theme-hover) !important;
+    box-shadow: 0 4px 12px var(--theme-shadow);
+    transform: translateY(-2px);
+  }
+  
+  &:focus {
+    background: var(--theme-focus) !important;
+    border-color: var(--theme-focus) !important;
+  }
+}
+
+.btn-secondary {
+  background: var(--theme-button-secondary) !important;
+  border-color: var(--theme-button-secondary) !important;
+  color: #ffffff !important;
+  
+  &:hover {
+    background: var(--theme-hover) !important;
+    border-color: var(--theme-hover) !important;
+    box-shadow: 0 4px 12px var(--theme-shadow);
+  }
+}
+
+.btn-outline-primary {
+  color: var(--theme-primary) !important;
+  border-color: var(--theme-primary) !important;
+  background: transparent;
+  
+  &:hover {
+    background: var(--theme-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px var(--theme-shadow);
+  }
+}
+
+// ===================================
+// 5. FORMS & INPUTS - THEME AWARE
+// ===================================
+
+.form-control,
+.form-select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="search"],
+textarea,
+select {
+  background: var(--theme-input-bg) !important;
+  border: 2px solid var(--theme-input-border) !important;
+  border-radius: 8px !important;
+  color: var(--theme-text-primary) !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+  
+  &::placeholder {
+    color: var(--theme-text-light) !important;
+    opacity: 0.7;
+  }
+  
+  &:focus {
+    border-color: var(--theme-input-focus) !important;
+    box-shadow: 0 0 0 4px var(--theme-shadow) !important;
+    outline: none !important;
+  }
+  
+  &:hover {
+    border-color: var(--theme-hover) !important;
+  }
+}
+
+.form-label {
+  color: var(--theme-text-primary) !important;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+// Search bar specific
+.search-box,
+.search-input {
+  input {
+    background: var(--theme-input-bg) !important;
+    border: 2px solid var(--theme-input-border) !important;
+    border-radius: 24px !important;
+    padding: 12px 20px !important;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      border-color: var(--theme-input-focus) !important;
+      box-shadow: 0 0 0 4px var(--theme-shadow),
+                  0 4px 12px var(--theme-shadow) !important;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ===================================
+// 6. NAVIGATION & HEADER
+// ===================================
+
+.navbar {
+  background: var(--theme-background) !important;
+  border-bottom: 1px solid var(--theme-border);
+  box-shadow: 0 2px 8px var(--theme-shadow);
+  
+  .navbar-brand {
+    color: var(--theme-text-primary) !important;
+    font-weight: 700;
+    
+    &:hover {
+      color: var(--theme-hover) !important;
+    }
+  }
+  
+  .nav-link {
+    color: var(--theme-text-primary) !important;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    padding: 8px 16px !important;
+    margin: 0 4px;
+    
+    &:hover {
+      background: var(--theme-accent);
+      color: var(--theme-hover) !important;
+    }
+    
+    &:focus {
+      outline: 2px solid var(--theme-focus);
+      outline-offset: 2px;
+    }
+    
+    &.active {
+      background: var(--theme-primary);
+      color: #ffffff !important;
+    }
+  }
+}
+
+// ===================================
+// 7. PRODUCT GRID & ITEMS
+// ===================================
+
+.product-list,
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.product-item,
+.product-box {
+  background: var(--theme-card-background);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--theme-shadow);
+  
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--theme-shadow);
+    border-color: var(--theme-primary);
+  }
+  
+  .product-name,
+  .product-title {
+    color: var(--theme-text-primary) !important;
+    font-weight: 600;
+  }
+  
+  .product-price {
+    color: var(--theme-primary) !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  
+  .product-brand,
+  .product-description {
+    color: var(--theme-text-primary) !important;
+  }
+}
+
+// ===================================
+// 8. BADGES & LABELS
+// ===================================
+
+.badge {
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 500;
+  
+  &.badge-primary {
+    background: var(--theme-primary) !important;
+    color: #ffffff;
+  }
+  
+  &.badge-secondary {
+    background: var(--theme-secondary) !important;
+    color: #ffffff;
+  }
+}
+
+// ===================================
+// 9. FILTERS & SIDEBAR
+// ===================================
+
+.filter-sidebar,
+.sidebar {
+  background: var(--theme-card-background);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px var(--theme-shadow);
+  
+  h3, h4, h5 {
+    color: var(--theme-text-primary) !important;
+    border-bottom: 2px solid var(--theme-border);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+// Price slider
+.rc-slider {
+  .rc-slider-track {
+    background: var(--theme-primary) !important;
+  }
+  
+  .rc-slider-handle {
+    border-color: var(--theme-primary) !important;
+    
+    &:hover,
+    &:focus {
+      border-color: var(--theme-hover) !important;
+      box-shadow: 0 0 0 5px var(--theme-shadow) !important;
+    }
+  }
+}
+
+// ===================================
+// 10. MODALS & POPUPS
+// ===================================
+
+.modal-content {
+  background: var(--theme-card-background);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  
+  .modal-header {
+    background: linear-gradient(135deg, var(--theme-accent), var(--theme-background));
+    border-bottom: 1px solid var(--theme-border);
+    border-radius: 12px 12px 0 0;
+    
+    .modal-title {
+      color: var(--theme-text-primary) !important;
+    }
+    
+    .close,
+    .btn-close {
+      color: var(--theme-text-primary);
+      opacity: 0.7;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .modal-body {
+    color: var(--theme-text-primary);
+  }
+  
+  .modal-footer {
+    background: var(--theme-background);
+    border-top: 1px solid var(--theme-border);
+  }
+}
+
+// ===================================
+// 11. TABLES
+// ===================================
+
+.table {
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  overflow: hidden;
+  
+  thead {
+    background: linear-gradient(135deg, var(--theme-accent), var(--theme-background));
+    
+    th {
+      color: var(--theme-text-primary) !important;
+      font-weight: 600;
+      border-color: var(--theme-border) !important;
+    }
+  }
+  
+  tbody {
+    tr {
+      color: var(--theme-text-primary);
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: var(--theme-accent);
+      }
+      
+      td {
+        border-color: var(--theme-border) !important;
+      }
+    }
+  }
+}
+
+// ===================================
+// 12. ALERTS & NOTIFICATIONS
+// ===================================
+
+.alert {
+  border-radius: 8px;
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 2px 8px var(--theme-shadow);
+  
+  &.alert-success {
+    background: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+  }
+  
+  &.alert-danger {
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+  
+  &.alert-warning {
+    background: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+  }
+  
+  &.alert-info {
+    background: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+  }
+}
+
+// ===================================
+// 13. PAGINATION
+// ===================================
+
+.pagination {
+  .page-link {
+    color: var(--theme-primary) !important;
+    border: 1px solid var(--theme-border);
+    border-radius: 6px;
+    margin: 0 4px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: var(--theme-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--theme-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--theme-shadow);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--theme-focus);
+      outline-offset: 2px;
+    }
+  }
+  
+  .page-item.active .page-link {
+    background: var(--theme-primary) !important;
+    border-color: var(--theme-primary) !important;
+    color: #ffffff !important;
+  }
+}
+
+// ===================================
+// 14. DROPDOWNS
+// ===================================
+
+.dropdown-menu {
+  background: var(--theme-card-background);
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px var(--theme-shadow);
+  
+  .dropdown-item {
+    color: var(--theme-text-primary);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: var(--theme-accent);
+      color: var(--theme-hover);
+    }
+    
+    &:focus {
+      background: var(--theme-accent);
+      outline: none;
+    }
+    
+    &.active {
+      background: var(--theme-primary);
+      color: #ffffff;
+    }
+  }
+}
+
+// ===================================
+// 15. BREADCRUMBS
+// ===================================
+
+.breadcrumb {
+  background: var(--theme-background);
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  padding: 12px 20px;
+  
+  .breadcrumb-item {
+    color: var(--theme-text-primary);
+    
+    a {
+      color: var(--theme-primary);
+      
+      &:hover {
+        color: var(--theme-hover);
+      }
+    }
+    
+    &.active {
+      color: var(--theme-text-light);
+    }
+  }
+}
+
+// ===================================
+// 16. CHECKBOXES & RADIO BUTTONS
+// ===================================
+
+.form-check-input {
+  border: 2px solid var(--theme-border) !important;
+  
+  &:checked {
+    background-color: var(--theme-primary) !important;
+    border-color: var(--theme-primary) !important;
+  }
+  
+  &:focus {
+    border-color: var(--theme-focus) !important;
+    box-shadow: 0 0 0 4px var(--theme-shadow) !important;
+  }
+}
+
+.form-check-label {
+  color: var(--theme-text-primary) !important;
+}
+
+// ===================================
+// 17. LOADING STATES
+// ===================================
+
+.spinner-border,
+.spinner-grow {
+  color: var(--theme-primary) !important;
+}
+
+// ===================================
+// 18. ICONS
+// ===================================
+
+.icon,
+i,
+svg {
+  color: var(--theme-text-primary);
+  transition: all 0.3s ease;
+}
+
+.icon-button {
+  color: var(--theme-primary);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: var(--theme-hover);
+    transform: scale(1.1);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--theme-focus);
+    outline-offset: 2px;
+  }
+}
+
