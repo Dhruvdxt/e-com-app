@@ -300,7 +300,7 @@ const createMerchantBrand = async ({ _id, brandName, business }) => {
     name: brandName,
     description: business,
     merchant: _id,
-    isActive: false
+    isActive: true
   });
 
   const brandDoc = await newBrand.save();
@@ -317,6 +317,9 @@ const createMerchantUser = async (email, name, merchant, host) => {
 
   const existingUser = await User.findOne({ email });
 
+  // Get merchant document for brand creation
+  const merchantDoc = await Merchant.findOne({ email });
+
   if (existingUser) {
     const query = { _id: existingUser._id };
     const update = {
@@ -324,10 +327,7 @@ const createMerchantUser = async (email, name, merchant, host) => {
       role: ROLES.Merchant
     };
 
-    const merchantDoc = await Merchant.findOne({
-      email
-    });
-
+    // Create brand for existing user
     await createMerchantBrand(merchantDoc);
 
     await mailgun.sendEmail(email, 'merchant-welcome', null, name);
@@ -348,6 +348,9 @@ const createMerchantUser = async (email, name, merchant, host) => {
       merchant,
       role: ROLES.Merchant
     });
+
+    // Create brand for new user
+    await createMerchantBrand(merchantDoc);
 
     await mailgun.sendEmail(email, 'merchant-signup', host, {
       resetToken,

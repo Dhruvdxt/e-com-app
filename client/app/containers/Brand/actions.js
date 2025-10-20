@@ -118,7 +118,7 @@ export const fetchBrandsSelect = () => {
   };
 };
 
-// add brand api
+// add brand api (Admin only)
 export const addBrand = () => {
   return async (dispatch, getState) => {
     try {
@@ -140,6 +140,51 @@ export const addBrand = () => {
       }
 
       const response = await axios.post(`${API_URL}/brand/add`, brand);
+
+      const successfulOptions = {
+        title: `${response.data.message}`,
+        position: 'tr',
+        autoDismiss: 1
+      };
+
+      if (response.data.success === true) {
+        dispatch(success(successfulOptions));
+        dispatch({
+          type: ADD_BRAND,
+          payload: response.data.brand
+        });
+
+        dispatch(goBack());
+        dispatch({ type: RESET_BRAND });
+      }
+    } catch (error) {
+      handleError(error, dispatch);
+    }
+  };
+};
+
+// add merchant brand api
+export const addMerchantBrand = () => {
+  return async (dispatch, getState) => {
+    try {
+      const rules = {
+        name: 'required',
+        description: 'required|max:200'
+      };
+
+      const brand = getState().brand.brandFormData;
+
+      const { isValid, errors } = allFieldsValidation(brand, rules, {
+        'required.name': 'Name is required.',
+        'required.description': 'Description is required.',
+        'max.description': 'Description may not be greater than 200 characters.'
+      });
+
+      if (!isValid) {
+        return dispatch({ type: SET_BRAND_FORM_ERRORS, payload: errors });
+      }
+
+      const response = await axios.post(`${API_URL}/brand/merchant/add`, brand);
 
       const successfulOptions = {
         title: `${response.data.message}`,
@@ -265,6 +310,78 @@ export const deleteBrand = id => {
       }
     } catch (error) {
       handleError(error, dispatch);
+    }
+  };
+};
+
+// update merchant brand api
+export const updateMerchantBrand = () => {
+  return async (dispatch, getState) => {
+    try {
+      const rules = {
+        name: 'required',
+        description: 'required|max:200'
+      };
+
+      const brand = getState().brand.brand;
+
+      const newBrand = {
+        name: brand.name,
+        description: brand.description
+      };
+
+      const { isValid, errors } = allFieldsValidation(newBrand, rules, {
+        'required.name': 'Name is required.',
+        'required.description': 'Description is required.',
+        'max.description': 'Description may not be greater than 200 characters.'
+      });
+
+      if (!isValid) {
+        return dispatch({ type: SET_BRAND_FORM_EDIT_ERRORS, payload: errors });
+      }
+
+      const response = await axios.put(`${API_URL}/brand/merchant/update/${brand._id}`, {
+        brand: newBrand
+      });
+
+      const successfulOptions = {
+        title: `${response.data.message}`,
+        position: 'tr',
+        autoDismiss: 1
+      };
+
+      if (response.data.success === true) {
+        dispatch(success(successfulOptions));
+        dispatch(goBack());
+      }
+    } catch (error) {
+      handleError(error, dispatch);
+    }
+  };
+};
+
+// fetch merchant's own brand
+export const fetchMerchantBrand = () => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(`${API_URL}/brand/merchant/my-brand`);
+
+      if (response.data.success === true) {
+        dispatch({
+          type: SET_BRAND,
+          payload: response.data.brand
+        });
+      }
+    } catch (error) {
+      // If no brand found, that's okay - merchant can create one
+      if (error.response?.status === 404) {
+        dispatch({
+          type: SET_BRAND,
+          payload: null
+        });
+      } else {
+        handleError(error, dispatch);
+      }
     }
   };
 };
