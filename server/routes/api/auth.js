@@ -189,7 +189,7 @@ router.post('/forgot', async (req, res) => {
     await mailgun.sendEmail(
       existingUser.email,
       'reset',
-      req.headers.host,
+      req.headers.host.split(':')[0] + ':8080',
       resetToken
     );
 
